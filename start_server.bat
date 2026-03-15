@@ -17,7 +17,7 @@ ECHO  PYTORCH_CUDA_ALLOC_CONF=%PYTORCH_CUDA_ALLOC_CONF%
 ECHO.
 
 REM Single worker — GPU is shared via PipelineManager semaphore
-uvicorn api.main:app ^
+uv run uvicorn api.main:app ^
     --host 0.0.0.0 ^
     --port 8000 ^
     --workers 1 ^

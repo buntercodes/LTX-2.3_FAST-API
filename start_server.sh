@@ -40,7 +40,7 @@ echo ""
 # the PipelineManager semaphore; multiple uvicorn workers would each load
 # separate pipeline instances and exhaust VRAM)
 # ---------------------------------------------------------------------------
-exec uvicorn api.main:app \
+exec uv run uvicorn api.main:app \
     --host "${HOST:-0.0.0.0}" \
     --port "${PORT:-8000}" \
     --workers 1 \
