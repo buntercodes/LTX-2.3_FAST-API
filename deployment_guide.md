@@ -88,7 +88,7 @@ cd ~/models
 
 # 1. Download LTX Distilled Checkpoint
 uv run hf download Lightricks/LTX-2.3 \
-  ltx-video-2.3-distilled.safetensors \
+  ltx-2.3-22b-distilled.safetensors \
   --local-dir .
 
 # 2. Download Gemma 3 (12B IT QAT Q4_0 unquantized) - Requires accepting terms on HF page first!
@@ -118,7 +118,7 @@ Now we point the FastAPI server to the downloaded weights.
    Open the file with `nano .env` and update the paths to match your downloads:
 
    ```bash
-   DISTILLED_CHECKPOINT_PATH=~/models/ltx-video-2.3-distilled.safetensors
+   DISTILLED_CHECKPOINT_PATH=~/models/ltx-2.3-22b-distilled.safetensors
    GEMMA_ROOT=~/models/gemma-3-12b-it-qat-q4_0-unquantized
    SPATIAL_UPSAMPLER_PATH=~/models/ltx-2.3-spatial-upscaler-x2-1.0.safetensors
 
