@@ -36,11 +36,11 @@ source $HOME/.cargo/env
 
 ## Step 3: Clone the Repository & API Code
 
-Since you have the updated codebase locally, the easiest way to get it onto the instance is to push it to a private GitHub repo and clone it. Assuming you have cloned it to `/workspace/LTX-2.3_FAST-API` on the packet.ai instance:
+Since you have the updated codebase locally, the easiest way to get it onto the instance is to push it to a private GitHub repo and clone it. Assuming you have cloned it to `~/LTX-2.3_FAST-API` on the packet.ai instance:
 
 ```bash
-git clone <your-repo-url> /workspace/LTX-2.3_FAST-API
-cd /workspace/LTX-2.3_FAST-API
+git clone <your-repo-url> ~/LTX-2.3_FAST-API
+cd ~/LTX-2.3_FAST-API
 ```
 
 ---
@@ -83,8 +83,8 @@ huggingface-cli login
 Create a folder to hold everything cleanly.
 
 ```bash
-mkdir -p /workspace/models
-cd /workspace/models
+mkdir -p ~/models
+cd ~/models
 
 # 1. Download LTX Distilled Checkpoint
 huggingface-cli download Lightricks/LTX-Video \
@@ -100,7 +100,7 @@ huggingface-cli download Lightricks/LTX-Video \
   upsampler_spatial.safetensors \
   --local-dir .
 
-cd /workspace/LTX-2.3_FAST-API
+cd ~/LTX-2.3_FAST-API
 ```
 
 ---
@@ -118,9 +118,9 @@ Now we point the FastAPI server to the downloaded weights.
    Open the file with `nano .env` and update the paths to match your downloads:
 
    ```bash
-   DISTILLED_CHECKPOINT_PATH=/workspace/models/ltx-video-2.3-distilled.safetensors
-   GEMMA_ROOT=/workspace/models/gemma-3-12b-it-qat-q4_0-unquantized
-   SPATIAL_UPSAMPLER_PATH=/workspace/models/upsampler_spatial.safetensors
+   DISTILLED_CHECKPOINT_PATH=~/models/ltx-video-2.3-distilled.safetensors
+   GEMMA_ROOT=~/models/gemma-3-12b-it-qat-q4_0-unquantized
+   SPATIAL_UPSAMPLER_PATH=~/models/upsampler_spatial.safetensors
 
    # Ensure BF16 default is set (since you have 96GB VRAM)
    QUANTIZATION=none
