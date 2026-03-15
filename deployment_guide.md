@@ -18,7 +18,7 @@ Most AI instances come with NVIDIA drivers installed, but let's ensure the basel
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y git wget curl build-essential libgl1-mesa-glx libglib2.0-0 ffmpeg python3-pip python3-venv tzdata
+sudo apt install -y git wget curl build-essential libgl1-mesa-glx libglib2.0-0 ffmpeg python3-pip python3-venv tzdata pipx
 ```
 
 ---
@@ -73,9 +73,14 @@ You must download these from HuggingFace.
 ### Install `huggingface_hub` and login
 
 Since the weights are gated, you must accept the terms on HF and login.
+To avoid corrupting the server's `transformers` library (which currently requires `huggingface-hub < 1.0`), we will install the new `hf` CLI globally using `pipx`.
+
 ```bash
-uv pip install -U "huggingface_hub[cli]"
-uv run hf auth login
+pipx install "huggingface_hub[cli]"
+pipx ensurepath
+source ~/.bashrc
+
+hf auth login
 # Paste your HuggingFace access token when prompted
 ```
 
@@ -87,16 +92,16 @@ mkdir -p ~/models
 cd ~/models
 
 # 1. Download LTX Distilled Checkpoint
-uv run hf download Lightricks/LTX-2.3 \
+hf download Lightricks/LTX-2.3 \
   ltx-2.3-22b-distilled.safetensors \
   --local-dir .
 
 # 2. Download Gemma 3 (12B IT QAT Q4_0 unquantized) - Requires accepting terms on HF page first!
-uv run hf download google/gemma-3-12b-it-qat-q4_0-unquantized \
+hf download google/gemma-3-12b-it-qat-q4_0-unquantized \
   --local-dir ./gemma-3-12b-it-qat-q4_0-unquantized
 
 # 3. Download Spatial Upsampler
-uv run hf download Lightricks/LTX-2.3 \
+hf download Lightricks/LTX-2.3 \
   ltx-2.3-spatial-upscaler-x2-1.0.safetensors \
   --local-dir .
 
