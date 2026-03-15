@@ -75,7 +75,7 @@ You must download these from HuggingFace.
 Since the weights are gated, you must accept the terms on HF and login.
 ```bash
 uv pip install -U "huggingface_hub[cli]"
-uv run huggingface-cli login
+uv run hf auth login
 # Paste your HuggingFace access token when prompted
 ```
 
@@ -87,16 +87,16 @@ mkdir -p ~/models
 cd ~/models
 
 # 1. Download LTX Distilled Checkpoint
-uv run huggingface-cli download Lightricks/LTX-Video \
+uv run hf download Lightricks/LTX-Video \
   ltx-video-2.3-distilled.safetensors \
   --local-dir .
 
 # 2. Download Gemma 3 (12B IT QAT Q4_0 unquantized) - Requires accepting terms on HF page first!
-uv run huggingface-cli download google/gemma-3-12b-it-qat-q4_0-unquantized \
+uv run hf download google/gemma-3-12b-it-qat-q4_0-unquantized \
   --local-dir ./gemma-3-12b-it-qat-q4_0-unquantized
 
 # 3. Download Spatial Upsampler (comes with ltx-video)
-uv run huggingface-cli download Lightricks/LTX-Video \
+uv run hf download Lightricks/LTX-Video \
   upsampler_spatial.safetensors \
   --local-dir .
 
