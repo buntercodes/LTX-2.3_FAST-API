@@ -32,7 +32,7 @@ router = APIRouter(prefix="/generate", tags=["Generation"])
 # ---------------------------------------------------------------------------
 
 @router.post(
-    "",
+    "/generate",
     response_model=GenerateResponse,
     status_code=status.HTTP_202_ACCEPTED,
     summary="Submit a video generation job",
