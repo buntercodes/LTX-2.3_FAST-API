@@ -87,7 +87,7 @@ mkdir -p ~/models
 cd ~/models
 
 # 1. Download LTX Distilled Checkpoint
-uv run hf download Lightricks/LTX-Video \
+uv run hf download Lightricks/LTX-2.3 \
   ltx-video-2.3-distilled.safetensors \
   --local-dir .
 
@@ -95,9 +95,9 @@ uv run hf download Lightricks/LTX-Video \
 uv run hf download google/gemma-3-12b-it-qat-q4_0-unquantized \
   --local-dir ./gemma-3-12b-it-qat-q4_0-unquantized
 
-# 3. Download Spatial Upsampler (comes with ltx-video)
-uv run hf download Lightricks/LTX-Video \
-  upsampler_spatial.safetensors \
+# 3. Download Spatial Upsampler
+uv run hf download Lightricks/LTX-2.3 \
+  ltx-2.3-spatial-upscaler-x2-1.0.safetensors \
   --local-dir .
 
 cd ~/LTX-2.3_FAST-API
@@ -120,7 +120,7 @@ Now we point the FastAPI server to the downloaded weights.
    ```bash
    DISTILLED_CHECKPOINT_PATH=~/models/ltx-video-2.3-distilled.safetensors
    GEMMA_ROOT=~/models/gemma-3-12b-it-qat-q4_0-unquantized
-   SPATIAL_UPSAMPLER_PATH=~/models/upsampler_spatial.safetensors
+   SPATIAL_UPSAMPLER_PATH=~/models/ltx-2.3-spatial-upscaler-x2-1.0.safetensors
 
    # Ensure BF16 default is set (since you have 96GB VRAM)
    QUANTIZATION=none
